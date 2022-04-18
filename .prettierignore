@@ -1,0 +1,10 @@
+node_modules
+public
+build
+pipelines
+*.md
+*.yml
+.github
+.devcontainer
+package.json
+package-lock.json
