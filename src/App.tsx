@@ -1,8 +1,14 @@
-import { AppBar, Container, CssBaseline, Stack, Toolbar, Typography } from '@mui/material';
+import { useState } from 'react';
+import { AppBar, Autocomplete, Box, Container, CssBaseline, Stack, TextField, Toolbar, Typography } from '@mui/material';
 
 import img from './assets/logo.png';
 
+const countries = ['All', 'France', 'United Kingdom'];
+
 function App() {
+	const [country, setCountry] = useState<string | undefined>(countries[0]);
+	const [inputValue, setInputValue] = useState('');
+
 	return (
 		<>
 			<CssBaseline />
@@ -16,7 +22,32 @@ function App() {
 			<main>
 				<Container>
 					<Stack spacing={6}>
-						<Typography variant="h3">Country</Typography>
+						<Box
+							sx={{
+								display: { xs: 'block', sm: 'flex' }
+							}}
+						>
+							<label htmlFor="country-picker">
+								<Typography variant="h3" sx={{ mr: { sm: 8 } }}>
+									Country
+								</Typography>
+							</label>
+							<Autocomplete
+								value={country || ''}
+								onChange={(event, newValue: string) => {
+									setCountry(newValue);
+								}}
+								inputValue={inputValue}
+								disableClearable
+								onInputChange={(event, newInputValue: string) => {
+									setInputValue(newInputValue);
+								}}
+								options={countries}
+								sx={{ width: 300, my: { xs: 4, sm: 0 } }}
+								id="country-picker"
+								renderInput={(params) => <TextField {...params} />}
+							/>
+						</Box>
 						<Typography variant="h3">Summary</Typography>
 						<Typography variant="h3">Revenue per month</Typography>
 					</Stack>
