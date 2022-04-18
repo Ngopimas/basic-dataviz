@@ -1,9 +1,16 @@
 import { useState } from 'react';
+import ApexChart from 'react-apexcharts';
 import { AppBar, Autocomplete, Box, Container, CssBaseline, Stack, TextField, Toolbar, Typography } from '@mui/material';
 
 import img from './assets/logo.png';
+import BarChart from './components/BarChart';
 
 const countries = ['All', 'France', 'United Kingdom'];
+
+const chartData = {
+	series: [3000, 4000, 4500, 5000, 4900, 6000, 7000, 9100, 0, 4900, 5500, 2000, 8100],
+	categories: ['Dec. 10', 'Jan. 11', 'Feb. 11', 'Mar. 11', 'Apr. 11', 'May. 11', 'Jun. 11', 'Jul. 11', 'Aug. 11', 'Sep. 11', 'Oct. 11', 'Nov. 11', 'Dec. 11']
+};
 
 function App() {
 	const [country, setCountry] = useState<string | undefined>(countries[0]);
@@ -50,6 +57,7 @@ function App() {
 						</Box>
 						<Typography variant="h3">Summary</Typography>
 						<Typography variant="h3">Revenue per month</Typography>
+						<BarChart data={chartData} />
 					</Stack>
 				</Container>
 			</main>
