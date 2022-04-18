@@ -1,11 +1,26 @@
 import { useState } from 'react';
-import ApexChart from 'react-apexcharts';
 import { AppBar, Autocomplete, Box, Container, CssBaseline, Stack, TextField, Toolbar, Typography } from '@mui/material';
 
 import img from './assets/logo.png';
 import BarChart from './components/BarChart';
+import SummaryCards from './components/SummaryCards';
 
 const countries = ['All', 'France', 'United Kingdom'];
+
+const cardsData = [
+	{
+		title: 'Total revenue',
+		value: '1000'
+	},
+	{
+		title: 'Average revenue per order',
+		value: '1000'
+	},
+	{
+		title: 'Number of unique customers',
+		value: '1000'
+	}
+];
 
 const chartData = {
 	series: [3000, 4000, 4500, 5000, 4900, 6000, 7000, 9100, 0, 4900, 5500, 2000, 8100],
@@ -55,7 +70,10 @@ function App() {
 								renderInput={(params) => <TextField {...params} />}
 							/>
 						</Box>
-						<Typography variant="h3">Summary</Typography>
+						<Stack spacing={4}>
+							<Typography variant="h3">Summary</Typography>
+							<SummaryCards data={cardsData} />
+						</Stack>
 						<Typography variant="h3">Revenue per month</Typography>
 						<BarChart data={chartData} />
 					</Stack>
