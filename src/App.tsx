@@ -4,8 +4,7 @@ import { Autocomplete, Box, Container, CssBaseline, Stack, TextField, Typography
 import BarChart from './components/BarChart';
 import SummaryCards from './components/SummaryCards';
 import TopBar from './components/TopBar';
-
-const countries = ['All', 'France', 'United Kingdom'];
+import countries from './data/countries.json';
 
 const cardsData = [
 	{
