@@ -1,4 +1,4 @@
-import { Box, Stack, Grid, Typography } from '@mui/material';
+import { Box, Grid } from '@mui/material';
 import SummaryCard from '../SummaryCard';
 import { ISummaryCard } from '../../interfaces/summaryCard';
 

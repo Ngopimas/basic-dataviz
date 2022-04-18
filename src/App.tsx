@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import { AppBar, Autocomplete, Box, Container, CssBaseline, Stack, TextField, Toolbar, Typography } from '@mui/material';
+import { Autocomplete, Box, Container, CssBaseline, Stack, TextField, Typography } from '@mui/material';
 
-import img from './assets/logo.png';
 import BarChart from './components/BarChart';
 import SummaryCards from './components/SummaryCards';
+import TopBar from './components/TopBar';
 
 const countries = ['All', 'France', 'United Kingdom'];
 
@@ -34,13 +34,7 @@ function App() {
 	return (
 		<>
 			<CssBaseline />
-			<AppBar position="static" sx={{ backgroundColor: 'background.paper', padding: 1, mb: 8 }}>
-				<Toolbar>
-					<Container>
-						<img width="247" height="35" src={img} alt="In The Memory logo" loading="lazy" />
-					</Container>
-				</Toolbar>
-			</AppBar>
+			<TopBar />
 			<main>
 				<Container>
 					<Stack spacing={6}>
