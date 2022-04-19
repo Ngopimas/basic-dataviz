@@ -21,4 +21,4 @@ The entire dashboard ban be filtered by `Country` (but also by `All`, for a glob
 
 #### 🎁 Bonus 
 
-I might add a more dynamic DB (SQL) and an API in the next future.
+I might add an API, a more dynamic DB (SQL) & tests, in the next future.
