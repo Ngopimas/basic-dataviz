@@ -1,8 +1,8 @@
 import { Box, Grid } from '@mui/material';
 import SummaryCard from '../SummaryCard';
-import { ISummaryCard } from '../../interfaces/summaryCard';
+import { SummaryCardInterface } from '../../interfaces';
 
-function SummaryCards({ data = [] }: { data: Pick<ISummaryCard, 'title' | 'value'>[] }) {
+function SummaryCards({ data = [] }: { data: Pick<SummaryCardInterface, 'title' | 'value'>[] }) {
 	const brandColors = ['#D34718', '#519A91', '#F5B714'];
 	const colorsCount = brandColors.length;
 

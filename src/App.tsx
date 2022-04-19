@@ -1,34 +1,62 @@
-import { useState } from 'react';
+import { useState, useMemo, useEffect } from 'react';
+import _ from 'lodash';
 import { Autocomplete, Box, Container, CssBaseline, Stack, TextField, Typography } from '@mui/material';
 
 import BarChart from './components/BarChart';
 import SummaryCards from './components/SummaryCards';
 import TopBar from './components/TopBar';
 import countries from './data/countries.json';
+import summary from './data/summary.json';
 
-const cardsData = [
-	{
-		title: 'Total revenue',
-		value: '1000'
-	},
-	{
-		title: 'Average revenue per order',
-		value: '1000'
-	},
-	{
-		title: 'Number of unique customers',
-		value: '1000'
-	}
+const categories = [
+	'Dec. 2010',
+	'Jan. 2011',
+	'Feb. 2011',
+	'Mar. 2011',
+	'Apr. 2011',
+	'May. 2011',
+	'Jun. 2011',
+	'Jul. 2011',
+	'Aug. 2011',
+	'Sep. 2011',
+	'Oct. 2011',
+	'Nov. 2011',
+	'Dec. 2011'
 ];
 
-const chartData = {
-	series: [3000, 4000, 4500, 5000, 4900, 6000, 7000, 9100, 0, 4900, 5500, 2000, 8100],
-	categories: ['Dec. 10', 'Jan. 11', 'Feb. 11', 'Mar. 11', 'Apr. 11', 'May. 11', 'Jun. 11', 'Jul. 11', 'Aug. 11', 'Sep. 11', 'Oct. 11', 'Nov. 11', 'Dec. 11']
-};
-
 function App() {
-	const [country, setCountry] = useState<string | undefined>(countries[0]);
+	const initialChartData = {
+		series: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+		categories
+	};
+
+	const [country, setCountry] = useState('All');
 	const [inputValue, setInputValue] = useState('');
+	const [chartData, setChartData] = useState(initialChartData);
+
+	const cardsData = useMemo(() => {
+		return [
+			{
+				title: 'Total revenue',
+				value: _.get(summary, [country, 'totalRevenue'], 0)
+			},
+			{
+				title: 'Average revenue per order',
+				value: _.get(summary, [country, 'average'], 0)
+			},
+			{
+				title: 'Number of unique customers',
+				value: _.get(summary, [country, 'totalCustomers'], 0)
+			}
+		];
+	}, [country, summary]);
+
+	useEffect(() => {
+		setChartData(initialChartData);
+		const monthlyRevenue = _.get(summary, [country, 'series']);
+		const countrySeries = _.map(categories, (month) => Number(_.get(monthlyRevenue, month, 0)));
+		setChartData({ series: countrySeries, categories });
+	}, [country, summary, categories]);
 
 	return (
 		<>

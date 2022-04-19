@@ -1,7 +1,7 @@
 import { Typography, Card, CardContent, CardHeader } from '@mui/material';
-import { ISummaryCard } from '../../interfaces/summaryCard';
+import { SummaryCardInterface } from '../../interfaces';
 
-const SummaryCard = ({ title = '', value = '', color = '' }: ISummaryCard) => {
+const SummaryCard = ({ title = '', value = '', color = '' }: SummaryCardInterface) => {
 	return (
 		<Card
 			sx={{
@@ -12,8 +12,8 @@ const SummaryCard = ({ title = '', value = '', color = '' }: ISummaryCard) => {
 			}}
 		>
 			<CardHeader title={title} sx={{ flexGrow: 1, alignItems: 'baseline' }} />
-			<CardContent>
-				<Typography variant="h4">{value}</Typography>
+			<CardContent sx={{ textAlign: 'end' }}>
+				<Typography variant="h4">{value}€</Typography>
 			</CardContent>
 		</Card>
 	);

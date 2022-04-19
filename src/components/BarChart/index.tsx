@@ -23,7 +23,7 @@ function BarChart({ data }: { data: { series: number[]; categories: string[] } }
 					},
 					labels: {
 						formatter: function (y) {
-							return y.toFixed(0) + '€';
+							return new Intl.NumberFormat('fr-FR').format(Number(y.toFixed(0))) + '€';
 						}
 					}
 				},
