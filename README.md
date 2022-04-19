@@ -17,7 +17,7 @@ This block display the three following metrics:
 This block has a graph showing the evolution of total revenue by month.
 
 
-The entire dashboard ban be filtered by `Country` (but also by `All`, for a global overview).
+The entire dashboard can be filtered by `Country` (but also by `All`, for a global overview).
 
 #### 🎁 Bonus 
 
