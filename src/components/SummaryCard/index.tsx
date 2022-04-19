@@ -1,3 +1,4 @@
+import CountUp from 'react-countup';
 import { Typography, Card, CardContent, CardHeader } from '@mui/material';
 import { SummaryCardInterface } from '../../interfaces';
 
@@ -13,7 +14,9 @@ const SummaryCard = ({ title = '', value = '', color = '' }: SummaryCardInterfac
 		>
 			<CardHeader title={title} sx={{ flexGrow: 1, alignItems: 'baseline' }} />
 			<CardContent sx={{ textAlign: 'end' }}>
-				<Typography variant="h4">{value}€</Typography>
+				<Typography variant="h4">
+					<CountUp start={0} end={Number(value)} duration={0.5} separator=" " suffix="€" />
+				</Typography>
 			</CardContent>
 		</Card>
 	);
